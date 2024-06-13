@@ -9,11 +9,14 @@ public class Example2DPlayerMove : MonoBehaviour
 
     private Rigidbody2D _rb;
 
+    private SpriteRenderer _spriteRenderer;
+
     private Vector2 _moveDirection;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -29,5 +32,15 @@ public class Example2DPlayerMove : MonoBehaviour
     {
         // ˆÚ“®ˆ—
         _rb.velocity = new Vector2(_moveDirection.x * speed, _rb.velocity.y);
+
+        // Œü‚«‚Ì•ÏX
+        if (_moveDirection.x > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (_moveDirection.x < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 }
